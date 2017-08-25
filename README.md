@@ -1,6 +1,6 @@
 # .NET Framework 4.7.1 Early Access
 
-This repository is the home for .NET Framework Early Access Program. It provides you with  all the information you need to participate in .NET Framework Early Access Program.
+This repository is the home for [.NET Framework Early Access Program](https://blogs.msdn.microsoft.com/dotnet/2017/08/07/welcome-to-the-net-framework-4-7-1-early-access). It provides you with  all the information you need to participate in .NET Framework Early Access Program.
 
 The .NET Framework 4.7.1 is the next version of the .NET Framework. It is currently feature-complete and in the testing phase. We are asking for individuals and companies to help validate the quality and compatibility of the release. It is not ready for production and is not supported.
 
@@ -13,6 +13,7 @@ The .NET Framework 4.7.1 is the next version of the .NET Framework. It is curren
 * [Instructions](instructions.md)
 * [Release Notes](https://github.com/Microsoft/dotnet/tree/master/releases/net471/README.md)
 * [Known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
+* [Welcome to the .NET Framework 4.7.1 Early Access!](https://blogs.msdn.microsoft.com/dotnet/2017/08/07/welcome-to-the-net-framework-4-7-1-early-access)
 
 **Reporting Issues**
 
