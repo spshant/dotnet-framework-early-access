@@ -5,15 +5,17 @@ This repository is the home for [.NET Framework Early Access Program](https://bl
 The .NET Framework 4.7.1 is the next version of the .NET Framework. It is currently feature-complete and in the testing phase. We are asking for individuals and companies to help validate the quality and compatibility of the release. It is not ready for production and is not supported.
 
 * [.NET Framework Early Access License](microsoft-dotnet-framework-pre-release-license.txt)
-* [Click to accept license terms and download .NET Framework 4.7.1 build 2538](https://go.microsoft.com/fwlink/?linkid=854093)
+* [Click to accept license terms and download .NET Framework 4.7.1 Developer Pack build 2539](https://go.microsoft.com/fwlink/?linkid=858231) - The Developer Pack installs the .NET Framework 4.7.1 build 2539, the .NET Framework Targeting Pack and the .NET Framework SDK.
 
 
 **Participation Information**
 
 * [Instructions](instructions.md)
 * [Release Notes](https://github.com/Microsoft/dotnet/tree/master/releases/net471/README.md)
-* [Known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md)
-* [Welcome to the .NET Framework 4.7.1 Early Access!](https://blogs.msdn.microsoft.com/dotnet/2017/08/07/welcome-to-the-net-framework-4-7-1-early-access)
+* [Known issues](https://github.com/Microsoft/dotnet/blob/master/releases/net471/dotnet471-known-issues.md) 
+* [Build 2539 - Welcome to the .NET Framework 4.7.1 Early Access!](https://blogs.msdn.microsoft.com/dotnet/2017/08/07/welcome-to-the-net-framework-4-7-1-early-access)
+* Features in .NET Framework 4.7.1
+    * [ASP.NET, Configuration and System.Messaging](https://blogs.msdn.microsoft.com/dotnet/2017/09/13/net-framework-4-7-1-asp-net-and-configuration-features)
 
 **Reporting Issues**
 
@@ -32,14 +34,13 @@ We typically ship pre-release builds for .NET Framework releases to get early fe
 
 ### Windows Versions
 
-The .NET Framework 4.7.1 Build 2538 can be installed on the following Windows versions.
+The .NET Framework 4.7.1 Build 2539 can be installed on the following Windows versions.
 
 **Client**
 
 * Windows 7 SP1
 * Windows 8.1
 * Windows 10 Anniversary Update
-* Windows 10 Creators Update
 
 **Server**
 
