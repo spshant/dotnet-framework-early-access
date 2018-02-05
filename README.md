@@ -9,7 +9,7 @@ This repository is the home for .NET Framework Early Access Program. It provides
 **Participation Information**
 
 * [Install Instructions](instructions.md)
-* [Release Notes](release-notes/build-3052/README.md)
+* [Release Notes](release-notes/build-3052/readme.md)
 * [Build 3052 - Blog post](https://go.microsoft.com/fwlink/?linkid=867415)
 
 **Reporting Issues**
