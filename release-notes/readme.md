@@ -6,6 +6,7 @@ You can learn about .NET Framework Early Access builds in Release Notes below. Y
 
 You can see what was included in each .NET Framework Early Access build. 
 
+- [Build 3621](build-3621/readme.md)
 - [Build 3052](build-3052/readme.md)
 
 ## Resources

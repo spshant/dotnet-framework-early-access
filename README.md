@@ -3,14 +3,14 @@
 This repository is the home for .NET Framework Early Access Program. It provides you with all the information you need to participate in .NET Framework Early Access Program. In this program we will share early builds of the next release of the .NET Framework on a regular basis for your feedback. The builds shared via this program are not ready for production and are not supported. 
 
 * [.NET Framework Early Access License](microsoft-dotnet-framework-pre-release-license.txt)
-* [Download .NET Framework Early Access build 3052](https://go.microsoft.com/fwlink/?linkid=867317) 
+* [Download .NET Framework Early Access build 3621](https://go.microsoft.com/fwlink/?linkid=2002300) 
 
 
 **Participation Information**
 
 * [Install Instructions](instructions.md)
-* [Release Notes](release-notes/build-3052/readme.md)
-* [Build 3052 - Blog post](https://go.microsoft.com/fwlink/?linkid=867415)
+* [Release Notes](release-notes/build-3621/readme.md)
+* [Build 3621 - Blog post](https://blogs.msdn.microsoft.com/dotnet/2018/06/06/announcing-net-framework-4-8-early-access-build-3621/)
 
 **Reporting Issues**
 
@@ -19,26 +19,20 @@ This repository is the home for .NET Framework Early Access Program. It provides
 
 ### Windows Versions
 
-The .NET Framework Build 3052 can be installed on the following Windows versions.
+The .NET Framework Build 3621 can be installed on the following Windows versions.
 
 **Client**
 
-* Windows 7 SP1
-* Windows 8.1
-* Windows 10 Anniversary Update
-* Windows 10 Creators Update
+* Windows 10 April 2018 Update
 * Windows 10 Fall Creators Update
+* Windows 10 Creators Update
+* Windows 10 Anniversary Update 
 
 **Server**
 
-* Windows Server 2008 R2 SP1
-* Windows Server 2012
-* Windows Server 2012 R2
+* Windows Server, version 1709
 * Windows Server 2016
 
-### Windows 10 Insider Builds
-
-The .NET Framework Early Access Builds are also included in the next version of Windows 10. The next version of Windows 10 is available to [Windows Insiders](https://insider.windows.com/). If you are not an insider, you can [join the Windows Insiders program](https://insider.windows.com/).
 
 ## More Information on the Program
 
@@ -48,7 +42,7 @@ The .NET Framework early access builds will replace any existing .NET Framework 
 
 ## More Information on the .NET Framework
 
-The [.NET Framework 4.7.1](https://blogs.msdn.microsoft.com/dotnet/2018/01/09/net-framework-4-7-1-is-available-on-windows-update-wsus-and-mu-catalog/) is the latest released version of the [.NET Framework](https://docs.microsoft.com/dotnet/framework/). It can be used for production deployments on Windows 7, Windows Server 2008 R2 SP1, and later versions of both the client and server Windows families.
+The [.NET Framework 4.7.2](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/) is the latest released version of the [.NET Framework](https://docs.microsoft.com/dotnet/framework/). It can be used for production deployments on Windows 7, Windows Server 2008 R2 SP1, and later versions of both the client and server Windows families.
 
 Please continue to file .NET Framework released product issues at [microsoft/dotnet](https://github.com/microsoft/dotnet/issues),
 .NET Core product issues at [dotnet/core](https://github.com/dotnet/core/issues),
