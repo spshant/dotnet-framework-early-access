@@ -23,6 +23,7 @@ The .NET Framework Build 3632 can be installed on the following Windows versions
 
 **Client**
 
+* Latest Windows 10 Insider Preview Build (RS5)
 * Windows 10 April 2018 Update
 * Windows 10 Fall Creators Update
 * Windows 10 Creators Update
