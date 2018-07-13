@@ -3,14 +3,14 @@
 This repository is the home for .NET Framework Early Access Program. It provides you with all the information you need to participate in .NET Framework Early Access Program. In this program we will share early builds of the next release of the .NET Framework on a regular basis for your feedback. The builds shared via this program are not ready for production and are not supported. 
 
 * [.NET Framework Early Access License](microsoft-dotnet-framework-pre-release-license.txt)
-* [Download .NET Framework Early Access build 3621](https://go.microsoft.com/fwlink/?linkid=2002300) 
+* [Download .NET Framework Early Access build 3632](https://go.microsoft.com/fwlink/?linkid=2006125) 
 
 
 **Participation Information**
 
 * [Install Instructions](instructions.md)
-* [Release Notes](release-notes/build-3621/readme.md)
-* [Build 3621 - Blog post](https://blogs.msdn.microsoft.com/dotnet/2018/06/06/announcing-net-framework-4-8-early-access-build-3621/)
+* [Release Notes](release-notes/build-3632/readme.md)
+* [Build 3632 - Blog post](https://blogs.msdn.microsoft.com/dotnet/2018/06/06/announcing-net-framework-4-8-early-access-build-3632/)
 
 **Reporting Issues**
 
@@ -19,7 +19,7 @@ This repository is the home for .NET Framework Early Access Program. It provides
 
 ### Windows Versions
 
-The .NET Framework Build 3621 can be installed on the following Windows versions.
+The .NET Framework Build 3632 can be installed on the following Windows versions.
 
 **Client**
 
