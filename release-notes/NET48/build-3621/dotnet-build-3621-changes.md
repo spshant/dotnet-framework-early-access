@@ -1,5 +1,5 @@
 # .NET Framework Build 3621 Release Notes
-You can view the full list of changes [here](NET48/dotnet-48-changes.md)
+You can view the full list of changes [here](/release-notes/NET48/dotnet-48-changes.md)
 
 .NET Framework release notes describe product improvements grouped by product area. Each change includes a Microsoft-internal VSTS bug ID, the primary binary that was updated and whether the change was a bug or a feature.
 
