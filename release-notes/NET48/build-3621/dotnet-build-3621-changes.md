@@ -15,7 +15,7 @@ Following changes are included in .NET Framework 4.8 build 3621. You can view th
 * Fixed Clickonce UI dialogs on high Dpi machines with scale set to more than 100% for both new and existing applications which scale upto 300%. In the scenario where user wants to see legacy images, there is an opt out switch "Switch.System.Windows.Forms.UseLegacyImages" that can be set to "true" in dfsvc.exe.config file. [389534, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
 * Fixed Mage so it can properly update the identity of dependent assemblies in ClickOnce application manifests. [534286, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
 * Fixed ClickOnce dialogs (Splash screen, Install progress dialog, Maintenance dialog and Update dialog) have accessibility issues as mentioned in this bug. Fix is for realigning control indices and setting accessible names where it was missing. [541886, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
-* Fixed progress bar alignment from Right to Left in Splash Screen and Download progress dialog for ARA & HEB languages for ClickOnce UI. Fixed RTL layout in the ClickOnce dialogs. Individual controls are to be set in RTL layout as this property is not propagated. Set this property explicitly on progress bar control.[552893, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
+* Fixed progress bar alignment from Right to Left in Splash Screen and Download progress dialog for ARA & HEB languages for ClickOnce UI. Fixed RTL layout in the ClickOnce dialogs. Individual controls are to be set in RTL layout as this property is not propagated. Set this property explicitly on progress bar control. [552893, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
 
 ## CLR
 
@@ -45,7 +45,7 @@ Following changes are included in .NET Framework 4.8 build 3621. You can view th
 
 ## Windows Forms
 
-* Enabled labels are now always rendered using a high contrast text color when a high contrast mode is enabled. This change is effective in applications that are recompiled to target .NET Framework 4.8 [486578, System.Windows.Forms.dll, Bug, Build:3621]
+* Enabled labels are now always rendered using a high contrast text color when a high contrast mode is enabled. This change is effective in applications that are recompiled to target .NET Framework 4.8. [486578, System.Windows.Forms.dll, Bug, Build:3621]
 * Maximize/Minimize button of new child Form are not scaled well on HDPI  devices because of image property set to not to scale. On 100% dpi machines scaling it not required but on high dpi devices, when scaling set to more than 100%, the images set for Maximize/Minimize boxes need to be scaled. [515092, System.Windows.Forms.dll, Bug, Build:3621]
 * Checkbox height is changed from square to rectangle when scaled. Padding and margins were scaled, thus adding to already scaled height of the checkbox as we were using item height to draw checkbox instead of checkbox height. Earlier these margins/paddings were constants and ignorable pixel sizes, and were not visible. [528418, System.Windows.Forms.dll, Bug, Build:3621]
 * The new UIA behavior for CheckedListBox control has been introduced: the first checkbox item in the CheckedListBox control is now announced by Narrator when focus moves to the control without any selected item. This change is effective in applications that were recompiled to target .NET Framework 4.8. [533226, System.Windows.Forms.dll, Bug, Build:3621]
@@ -69,7 +69,7 @@ Following changes are included in .NET Framework 4.8 build 3621. You can view th
     </runtime>
     </configuration>    
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [574309, System.Windows.Forms.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [574309, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed and improved the stability of Live Regions feature by adding LiveSetting property setter check. This feature is available starting with Windows 10, version 1709 (RS3).
 In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
@@ -81,7 +81,7 @@ In order for the application to benefit from these changes, the application shou
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [583863, System.Windows.Forms.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [583863, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed Winforms application and controls, when enable for ""per-Monitor"" Dpi aware, they are not scaled according to the dpi of the monitor ( or device). Winforms app by default behave like ""System"" Dpi aware. This is causing Winforms applications/controls to be displayed ""blur"" as a result of windows scaling them and in some cases, controls are either not scaled or scaled out of proportionate. Made changes on control level to respond to DPI change event (assuming  windows raise this event whenever there is a DPI change) and rescale controls according to the new DPI. [597091, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed by adding support for UIA notification event to Label and GroupBox classes. This feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
@@ -93,7 +93,7 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [563596, Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [563596, Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
 * Fixed by adding support for the live region feature to the ToolStripStatusLabel class. In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
     <configuration>
@@ -104,7 +104,7 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [564300,Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [564300,Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
 * Fixed by improving the accessibility of DataGridView and ListView to make sort direction available via UIA: added exposing sort order and sort column via ItemStatus property and column name. This change is effective in applications that were recompiled to target .NET Framework 4.8. [549288, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed by making the forward and backward toolstrip navigation consistent. This feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
@@ -116,7 +116,7 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [544592, System.Windows.Forms.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [544592, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed the announcement of DataGridView Read-only TextBox cells by making accessible and clear: editable TextBoxes are announced as 'editable' and read-only TextBoxes are announced as 'read-only'. This change is effective in applications that were recompiled to target .NET Framework 4.8. [599936, System.Windows.Forms.dll, Bug, Build:3621]
 
 ## WPF
@@ -146,6 +146,6 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
 ## WorkFlow
 
 * We have modified the hashing algorithm used to generate XOML file checksums when building projects with XOML files. If this causes problems, the previous hashing algorithm can be used by specifying ""true"" for the following AppContext switch: Switch.System.Workflow.ComponentModel.UseLegacyHashForXomlFileChecksum. Note that this AppContext switch applies to the MSBuild process, so must be specified in the ""config path"" of the MSBuild.Exe that is used to perform the builds. [531054, System.Workflow.Runtime.dll, Bug, Build:3621]
-* We have modified the hashing algorithm used to calculate keys to internal in-memory caches. If this causes problems, the previous hashing algorithm can be used by specifying ""true"" for the following AppContext switches: Switch.System.Workflow.Runtime.UseLegacyHashForWorkflowDefinitionDispenserCacheKey Switch.System.Workflow.Runtime.UseLegacyHashForSqlTrackingCacheKey [532505, System.Workflow.Runtime.dll, Bug, Build:3621]"
+* We have modified the hashing algorithm used to calculate keys to internal in-memory caches. If this causes problems, the previous hashing algorithm can be used by specifying ""true"" for the following AppContext switches: Switch.System.Workflow.Runtime.UseLegacyHashForWorkflowDefinitionDispenserCacheKey Switch.System.Workflow.Runtime.UseLegacyHashForSqlTrackingCacheKey. [532505, System.Workflow.Runtime.dll, Bug, Build:3621]
 * Fixed default hashing algorithm that help debugging symbols has changed. If you encounter problems with breakpoints in the workflow designer not being hit when expected, you may have a mismatch of hashing algorithms between MSBuild and the project being debugged. The following AppContext switch can be specified for MSBuild.exe and the project being debugged to help alleviate the problem. Switch.System.Activities.UseLegacyHashForDebuggerSymbols If this switch has a value of ""true"", then the default hashing algorithm for pre-4.7.2 versions of .NET are used. If the value of the switch is ""false"", the newer default hashing algorithm is used. [537692, System.Workflow.Runtime.dll, Bug, Build:3621]
 * Previously, under extreme usage conditions (high volume of connections to MSDTC), it was possible for a CriticalSection to be held by a single thread indefinitely, resulting in the need to restart the process. This problem has been resolved. In addition, some object caches that would help performance in multi-threaded scenarios were not taken advantage of correctly. This has been resolved. [540812, System.Workflow.Runtime.dll, Bug, Build:3621]

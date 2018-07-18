@@ -5,7 +5,7 @@ Following changes are included in .NET Framework 4.8 build 3632. You can view th
 
 ## BCL
 
-* Fixed the serialization compatibility issue for CultureAwareComparer class [621387, mscorlib.dll , Bug, Build:3632]
+* Fixed the serialization compatibility issue for CultureAwareComparer class. [621387, mscorlib.dll , Bug, Build:3632]
 
 ## CLR
 
@@ -13,12 +13,12 @@ Following changes are included in .NET Framework 4.8 build 3632. You can view th
 
 ## SQL
 
-* Fixed the following issue relevant to SQL: while connecting to Azure SQL DB using .NET 4.7.2, using MultipleActiveResultSets=true in the connection string with System.Data.SqlClient.SqlConnection, async query operations sometimes lead to a bad TDS protocol request stream to be sent from the client, causing the Async Query APIs to fail connection string [624283, System.Data.dll, Bug, Build:3632]
+* Fixed the following issue relevant to SQL: while connecting to Azure SQL DB using .NET 4.7.2, using MultipleActiveResultSets=true in the connection string with System.Data.SqlClient.SqlConnection, async query operations sometimes lead to a bad TDS protocol request stream to be sent from the client, causing the Async Query APIs to fail connection string. [624283, System.Data.dll, Bug, Build:3632]
 
 ## Windows Forms
 
 * Added support for UIA notification event to ProgressBar class. The feature is available starting with Windows 10, version 1709 (RS3). [581351, System.Windows.Forms.dll, Bug, Build:3632]
-* Fixed an issue where read-only Status for DataGridView TextBox column is not announced by Narrator. This change is effective in applications that were recompiled to target .NET framework 4.8 [599936, System.Windows.Forms.dll, Bug, Build:3632]
+* Fixed an issue where read-only Status for DataGridView TextBox column is not announced by Narrator. This change is effective in applications that were recompiled to target .NET framework 4.8. [599936, System.Windows.Forms.dll, Bug, Build:3632]
 * Fixed reliability issues in Graphics class when used in RDP sessions. [627739, System.Drawing.dll, Bug, Build:3632]
 
 ## WPF

@@ -8,24 +8,24 @@
 * Fixed System.Runtime.CompilerServices.RuntimeFeature.IsSupported to correctly account for application compatibility quirk settings for the Portable PDB feature introduced in .NET Framework 4.7.1. [571206, mscorlib.dll, Bug, Build:3621]
 * Fixed the exception by parsing Japanese dates that have the year number exceeding the number of years in that date era. The behavior change will be noticed only if someone tries to parse a date containing some era and year while the year exceeds the last year in that era. [590659, mscorlib.dll, Bug, Build:3621]
 * By default, elevated processes will not read HKCU for managed COM activation information. [592187, clr.dll, Bug, Build:3621]
-* Fixed the serialization compatibility issue for CultureAwareComparer class [621387, mscorlib.dll , Bug, Build:3632]
+* Fixed the serialization compatibility issue for CultureAwareComparer class. [621387, mscorlib.dll , Bug, Build:3632]
 
 ## ClickOnce
 
 * Fixed Clickonce UI dialogs on high Dpi machines with scale set to more than 100% for both new and existing applications which scale upto 300%. In the scenario where user wants to see legacy images, there is an opt out switch "Switch.System.Windows.Forms.UseLegacyImages" that can be set to "true" in dfsvc.exe.config file. [389534, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
 * Fixed Mage so it can properly update the identity of dependent assemblies in ClickOnce application manifests. [534286, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
 * Fixed ClickOnce dialogs (Splash screen, Install progress dialog, Maintenance dialog and Update dialog) have accessibility issues as mentioned in this bug. Fix is for realigning control indices and setting accessible names where it was missing. [541886, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
-* Fixed progress bar alignment from Right to Left in Splash Screen and Download progress dialog for ARA & HEB languages for ClickOnce UI. Fixed RTL layout in the ClickOnce dialogs. Individual controls are to be set in RTL layout as this property is not propagated. Set this property explicitly on progress bar control.[552893, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
+* Fixed progress bar alignment from Right to Left in Splash Screen and Download progress dialog for ARA & HEB languages for ClickOnce UI. Fixed RTL layout in the ClickOnce dialogs. Individual controls are to be set in RTL layout as this property is not propagated. Set this property explicitly on progress bar control. [552893, Microsoft.Build.Tasks.v4.0.dll, Bug, Build:3621]
 
 ## CLR
 
 * Fixed LoadFrom(String, Byte[], AssemblyHashAlgorithm) works with SHA2 algorithms. [229901, mscorlib.dll, Bug, Build:3621]
 * Reduced AsyncLocal memory overhead on value change. [470761, mscorlib.dll, Bug, Build:3621]
 * Improved spin-waits in several synchronization primitives to perform better on Intel Skylake and more recent microarchitectures. [495945, mscorlib.dll, Bug, Build:3621]
-* Fixed issues where incorrect values are sent to EventListeners.  This includes incorrect activity ids on start and stop events and improper EventLevel values. [581072, mscorlib.dll, Bug, Build:3621]
+* Fixed issues where incorrect values are sent to EventListeners. This includes incorrect activity ids on start and stop events and improper EventLevel values. [581072, mscorlib.dll, Bug, Build:3621]
 * Fixed a potential crash with concurrent calls to a new dynamic method. [581154, mscorlib.dll, Bug, Build:3621]
 * Fixed a possible deadlock when calling Dispose() on an EventSource. [597221, System.Core.dll, Bug, Build:3621]
-* The ‘shadowCopyVerifyByTimestamp’ setting is now configurable for individual appdomains, as opposed to being a process wide setting.  This helps in situations where you may not be the host process, but want to configure a new appdomain that verifys timestamps when shadow copying. [565570, clr.dll, Bug, Build:3632]
+* The ‘shadowCopyVerifyByTimestamp’ setting is now configurable for individual appdomains, as opposed to being a process wide setting. This helps in situations where you may not be the host process, but want to configure a new appdomain that verifys timestamps when shadow copying. [565570, clr.dll, Bug, Build:3632]
 
 ## Networking
 
@@ -37,7 +37,7 @@
 
 * Fixed the issue that SqlDataReader.ReadAsync() runs synchronously. Now the method runs asynchronously as expected. [594433, System.Data.dll, Bug, Build:3621]
 * Fixed the issue while using SqlConnection.ConnectionString to set a null or empty connection string, an NRE exception will be thrown by the usage of the API in .Net Framework 4.7.2. [613944, System.Data.dll, Bug, Build:3621]
-* Fixed the following issue relevant to SQL: while connecting to Azure SQL DB using .NET 4.7.2, using MultipleActiveResultSets=true in the connection string with System.Data.SqlClient.SqlConnection, async query operations sometimes lead to a bad TDS protocol request stream to be sent from the client, causing the Async Query APIs to fail connection string [624283, System.Data.dll, Bug, Build:3632]
+* Fixed the following issue relevant to SQL: while connecting to Azure SQL DB using .NET 4.7.2, using MultipleActiveResultSets=true in the connection string with System.Data.SqlClient.SqlConnection, async query operations sometimes lead to a bad TDS protocol request stream to be sent from the client, causing the Async Query APIs to fail connection string. [624283, System.Data.dll, Bug, Build:3632]
 
 ## WCF
 
@@ -47,7 +47,7 @@
 
 ## Windows Forms
 
-* Enabled labels are now always rendered using a high contrast text color when a high contrast mode is enabled. This change is effective in applications that are recompiled to target .NET Framework 4.8 [486578, System.Windows.Forms.dll, Bug, Build:3621]
+* Enabled labels are now always rendered using a high contrast text color when a high contrast mode is enabled. This change is effective in applications that are recompiled to target .NET Framework 4.8. [486578, System.Windows.Forms.dll, Bug, Build:3621]
 * Maximize/Minimize button of new child Form are not scaled well on HDPI  devices because of image property set to not to scale. On 100% dpi machines scaling it not required but on high dpi devices, when scaling set to more than 100%, the images set for Maximize/Minimize boxes need to be scaled. [515092, System.Windows.Forms.dll, Bug, Build:3621]
 * Checkbox height is changed from square to rectangle when scaled. Padding and margins were scaled, thus adding to already scaled height of the checkbox as we were using item height to draw checkbox instead of checkbox height. Earlier these margins/paddings were constants and ignorable pixel sizes, and were not visible. [528418, System.Windows.Forms.dll, Bug, Build:3621]
 * The new UIA behavior for CheckedListBox control has been introduced: the first checkbox item in the CheckedListBox control is now announced by Narrator when focus moves to the control without any selected item. This change is effective in applications that were recompiled to target .NET Framework 4.8. [533226, System.Windows.Forms.dll, Bug, Build:3621]
@@ -60,7 +60,7 @@
 * The new UIA behavior for numeric and domain up-down controls has been introduced: numeric and domain up-down controls without labels (custom UIA name) are announced by Narrator as 'spinners'. This change is effective in applications that were recompiled to target .NET Framework 4.8. [549543, System.Windows.Forms.dll, Bug, Build:3621]
 * The new UIA behavior for CheckedListBox control has been introduced: an empty CheckedListBox control now has a focus rectangle drawn for a virtual first item when the control becomes focused. This change is effective in applications that were recompiled to target .NET Framework 4.8. [549558, System.Windows.Forms.dll, Bug, Build:3621]
 * Improved ListView accessibility by enabling showing grey rectangle around the selected ListView item when parent ListView is out if focus. This change is effective in applications that were recompiled to target .NET Framework 4.8. [564762, System.Windows.Forms.dll, Bug, Build:3621]
-* Fixed VisualStyle property in Winforms, is checking for supported values (by Winforms) and any value that goes outside of this range, Winforms throws an exception. Winforms also checks if the VisualStyle property set is supported by Winforms when it is using this property and does no-op if it is not supported. Underlying native method we use to set visual styles does not care what the value for visualstyle is being passed to it.  Making this change will align Winforms code with windows and does not throw exception but still validate supported visual styles when using this property. Removing the validation condition while setting this property. [578093, System.Windows.Forms.dll, Bug, Build:3621]
+* Fixed VisualStyle property in Winforms, is checking for supported values (by Winforms) and any value that goes outside of this range, Winforms throws an exception. Winforms also checks if the VisualStyle property set is supported by Winforms when it is using this property and does no-op if it is not supported. Underlying native method we use to set visual styles does not care what the value for visualstyle is being passed to it. Making this change will align Winforms code with windows and does not throw exception but still validate supported visual styles when using this property. Removing the validation condition while setting this property. [578093, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed the DataGridView's Combobox expand/collapse state accessible for the customers who use assistive technologies. In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
     <configuration>
@@ -71,7 +71,7 @@
     </runtime>
     </configuration>    
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [574309, System.Windows.Forms.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [574309, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed and improved the stability of Live Regions feature by adding LiveSetting property setter check. This feature is available starting with Windows 10, version 1709 (RS3).
 In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
@@ -83,7 +83,7 @@ In order for the application to benefit from these changes, the application shou
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [583863, System.Windows.Forms.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [583863, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed Winforms application and controls, when enable for ""per-Monitor"" Dpi aware, they are not scaled according to the dpi of the monitor ( or device). Winforms app by default behave like ""System"" Dpi aware. This is causing Winforms applications/controls to be displayed ""blur"" as a result of windows scaling them and in some cases, controls are either not scaled or scaled out of proportionate. Made changes on control level to respond to DPI change event (assuming  windows raise this event whenever there is a DPI change) and rescale controls according to the new DPI. [597091, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed by adding support for UIA notification event to Label and GroupBox classes. This feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
@@ -95,7 +95,7 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [563596, Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [563596, Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
 * Fixed by adding support for the live region feature to the ToolStripStatusLabel class. In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
     <configuration>
@@ -106,7 +106,7 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [564300,Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [564300,Windows.UI.Xaml.Automation.Peers.dll, Windows.dll, Bug, Build:3621]
 * Fixed by improving the accessibility of DataGridView and ListView to make sort direction available via UIA: added exposing sort order and sort column via ItemStatus property and column name. This change is effective in applications that were recompiled to target .NET Framework 4.8. [549288, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed by making the forward and backward toolstrip navigation consistent. This feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET Framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
     <?xml version=""1.0"" encoding=""utf-8""?>
@@ -118,17 +118,17 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
     </runtime>
     </configuration>
 In order for an application that targets .NET Framework 4.8 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [544592, System.Windows.Forms.dll, Bug, Build:3621]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>. [544592, System.Windows.Forms.dll, Bug, Build:3621]
 * Fixed the announcement of DataGridView Read-only TextBox cells by making accessible and clear: editable TextBoxes are announced as 'editable' and read-only TextBoxes are announced as 'read-only'. This change is effective in applications that were recompiled to target .NET Framework 4.8. [599936, System.Windows.Forms.dll, Bug, Build:3621]
 * Added support for UIA notification event to ProgressBar class. The feature is available starting with Windows 10, version 1709 (RS3). [581351, System.Windows.Forms.dll, Bug, Build:3632]
-* Fixed an issue where read-only Status for DataGridView TextBox column is not announced by Narrator. This change is effective in applications that were recompiled to target .NET framework 4.8 [599936, System.Windows.Forms.dll, Bug, Build:3632]
+* Fixed an issue where read-only Status for DataGridView TextBox column is not announced by Narrator. This change is effective in applications that were recompiled to target .NET framework 4.8. [599936, System.Windows.Forms.dll, Bug, Build:3632]
 * Fixed reliability issues in Graphics class when used in RDP sessions. [627739, System.Drawing.dll, Bug, Build:3632]
 
 ## WPF
 
 * Fixed a memory leak arising when removing data items from their parent collections, when UIAutomation is present. [172291, PresentationFramework.dll, Bug, Build:3621]
 * Fixed virtualizing ItemsControl hung during scrolling when Items collection contains duplicate value-typed objects. [360053, PresentationFramework.dll, Bug, Build:3621]
-* Fixed WPF application can crash with NullReferenceException when changing a property used by a DataTrigger whose host element has been removed from the visual tree.  The crash only occurs if the host element is garbage-collected during a small window of time during the property-change notification. [401484, PresentationFramework.dll, Bug, Build:3621]
+* Fixed WPF application can crash with NullReferenceException when changing a property used by a DataTrigger whose host element has been removed from the visual tree. The crash only occurs if the host element is garbage-collected during a small window of time during the property-change notification. [401484, PresentationFramework.dll, Bug, Build:3621]
 * Fixed WPF app that has multiple top-level windows in different threads that crashes during a theme change. [404464, PresentationFramework.dll, Bug, Build:3621]
 * Fixed WPF applications running on touch or stylus-enabled machines can sometimes hang at startup or during connection of a tablet or stylus device. [474688, PresentationFramework.dll, Bug, Build:3621]
 * Fixed focus issues in WPF applications running in high contrast themes, it can be difficult to distinguish when a TextBox, PasswordBox, or RichTextBox has focus. [486957, PresentationFramework.dll, Bug, Build:3621]
@@ -147,13 +147,13 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
 * Fixed timing issues in the finalizer thread could potentially cause exceptions during AppDomain or process shutdown in certain .NET applications. This is generally seen in applications that do not correctly shut down Dispatchers running on worker threads prior to process or AppDomain shutdown. Such applications should take care to properly manage the lifetime of Dispatchers. This change adds an AppContext switch that can help alleviate (but not eliminate) some of the issues that may arise from these application design issues. To enable this, set the AppContext flag "Switch.MS.Internal.DoNotInvokeInWeakEventTableShutdownListener=true". [606492, WindowsBase.dll, Bug, Build:3621]
 * Fixed crash issues and allows the replace to proceed.When replacing multiple characters with a single character (in a different language than replaced text) using IMEPad, WPF crashes. [595046, PresentationFramework.dll, Bug, Build:3621]
 * Fixed WPF application that changes TreeView.IsEnabled and (at the same time) changes the underyling collection(s) can experience a spurious ElementNotAvailableException. [573999, PresentationFramework.dll, Bug, Build:3621]
-* Addressed the issue of high CPU usage or hangs. This used to happen under certain conditions, where, WPF applications using WindowChromeWorker experience high CPU usage or hangs.  [437642, PresentationFramework.dll, Bug, Build:3632]
-* Fixed a bug in the 4.7 algorithm for allocating sizes to *-rows in a Grid.  In some cases (e.g. Grid with Height="Auto" containing empty rows), rows were arranged at the wrong position, possibly outside the Grid altogether. [590061, PresentationFramework.dll, Bug, Build:3632]
+* Addressed the issue of high CPU usage or hangs. This used to happen under certain conditions, where, WPF applications using WindowChromeWorker experience high CPU usage or hangs. . [437642, PresentationFramework.dll, Bug, Build:3632]
+* Fixed a bug in the 4.7 algorithm for allocating sizes to *-rows in a Grid. In some cases (e.g. Grid with Height="Auto" containing empty rows), rows were arranged at the wrong position, possibly outside the Grid altogether. [590061, PresentationFramework.dll, Bug, Build:3632]
 * Fixed a potential deadlock in WPF Packaging APIs when multiple threads were both creating and closing large packages simultaneously. [609850, PresentationCore.dll, WindowsBase.dll, Bug, Build:3632]
 
 ## WorkFlow
 
 * We have modified the hashing algorithm used to generate XOML file checksums when building projects with XOML files. If this causes problems, the previous hashing algorithm can be used by specifying ""true"" for the following AppContext switch: Switch.System.Workflow.ComponentModel.UseLegacyHashForXomlFileChecksum. Note that this AppContext switch applies to the MSBuild process, so must be specified in the ""config path"" of the MSBuild.Exe that is used to perform the builds. [531054, System.Workflow.Runtime.dll, Bug, Build:3621]
-* We have modified the hashing algorithm used to calculate keys to internal in-memory caches. If this causes problems, the previous hashing algorithm can be used by specifying ""true"" for the following AppContext switches: Switch.System.Workflow.Runtime.UseLegacyHashForWorkflowDefinitionDispenserCacheKey Switch.System.Workflow.Runtime.UseLegacyHashForSqlTrackingCacheKey [532505, System.Workflow.Runtime.dll, Bug, Build:3621]"
+* We have modified the hashing algorithm used to calculate keys to internal in-memory caches. If this causes problems, the previous hashing algorithm can be used by specifying ""true"" for the following AppContext switches: Switch.System.Workflow.Runtime.UseLegacyHashForWorkflowDefinitionDispenserCacheKey Switch.System.Workflow.Runtime.UseLegacyHashForSqlTrackingCacheKey. [532505, System.Workflow.Runtime.dll, Bug, Build:3621]"
 * Fixed default hashing algorithm that help debugging symbols has changed. If you encounter problems with breakpoints in the workflow designer not being hit when expected, you may have a mismatch of hashing algorithms between MSBuild and the project being debugged. The following AppContext switch can be specified for MSBuild.exe and the project being debugged to help alleviate the problem. Switch.System.Activities.UseLegacyHashForDebuggerSymbols If this switch has a value of ""true"", then the default hashing algorithm for pre-4.7.2 versions of .NET are used. If the value of the switch is ""false"", the newer default hashing algorithm is used. [537692, System.Workflow.Runtime.dll, Bug, Build:3621]
 * Previously, under extreme usage conditions (high volume of connections to MSDTC), it was possible for a CriticalSection to be held by a single thread indefinitely, resulting in the need to restart the process. This problem has been resolved. In addition, some object caches that would help performance in multi-threaded scenarios were not taken advantage of correctly. This has been resolved. [540812, System.Workflow.Runtime.dll, Bug, Build:3621]
