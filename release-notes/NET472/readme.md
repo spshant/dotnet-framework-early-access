@@ -6,7 +6,7 @@ You can learn about .NET Framework Early Access builds in Release Notes below. Y
 
 You can see what was included in each of the .NET Framework Early Access builds. 
 
-- [Build 3052](/build-3052/readme.md).
+- [Build 3052](/build-3052/readme.md)
 
 ## Resources
 
