@@ -3,7 +3,7 @@
 You can learn about the changes made in this build of the .NET Framework.
 
 - [Download](https://go.microsoft.com/fwlink/?linkid=2006125)
-- [Announcement blog post](https://go.microsoft.com/fwlink/?linkid=2005835)
+- [Announcement blog post](https://github.com/spshant/dotnet-framework-early-access/blob/eap-3632/release-notes/NET48/build-3632/readme.md)
 - [Release notes](dotnet-build-3632-changes.md)
 
 ## Release Notes by Product Area
