@@ -52,16 +52,15 @@ In order for the application to benefit from these changes, the application shou
 * Fixed PropertyGrid control scaling issue in Winforms, when parent window DPI changed. PropertyGrid control in the .NET 4.8 runtime will now properly scale according to current running monitor DPI setting. Developer has to opt-in to this fix by either targeting to .NET 4.8 framework or using the .NET 4.8 opt-in config switch. [616661, System.Windows.Forms.dll, Bug, Build:3646]
 * Fixed Checkbox and RadioButton controls when set to 'FlatStyle' not being scaled on high Dpi monitors. [638326, System.Windows.Forms.dll, Bug, Build:3646]
 * Fixed DataGridView ComboBox accessible hierarchy. Introduced the support of ComboBox UIA notifications. The feature is available starting with Windows 10, version 1709 (RS3).
-In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. App.config file content: 
-
-<?xml version=""1.0"" encoding=""utf-8""?>
-<configuration>
-  <runtime>
-    <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
-    <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false""/>
-  </runtime>
-</configuration>
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. 
+App.config file content: 
+      <configuration>
+        <runtime>
+        <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
+        <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
+       <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false""/>
+       </runtime>
+      </configuration>
 In order for an application that targets 4.7.3 to opt out from this change, use the following combination of switches:
 <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> 
 [642548, System.Windows.Forms.dll, Bug, Build:3646]
