@@ -169,7 +169,7 @@ In order for the application to benefit from these changes, the application shou
   </runtime>
 </configuration>
 In order for an application that targets 4.7.3 to opt out from this change, use the following combination of switches:
-<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> 
+    <AppContextSwitchOverrides   value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> 
 [642548, System.Windows.Forms.dll, Bug, Build:3646]
 * Fixed RadioButton/ChecKBox controls truncation issue when control property is set to 'Flat/Popup style ' [645041, System.Windows.Forms.dll, Bug, Build:3646]
 * Fixed Button control to scale according to monitor Dpi on which the control is being displayed. [656271, System.Windows.Forms.dll, Bug, Build:3646]
