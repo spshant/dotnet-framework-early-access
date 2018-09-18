@@ -8,11 +8,11 @@ You can learn about the changes made in this build of the .NET Framework.
 
 ## Release Notes by Product Area
 
-- [ASP.NET](dotnet-build-3646-changes.md#asp.net)
-- [BCL](dotnet-build-3646-changes.md#bcl)
-- [CLR](dotnet-build-3646-changes.md#clr)
-- [SQL](dotnet-build-3646-changes.md#sql)
-- [WCF](dotnet-build-3646-changes.md#wcf)
-- [Windows Forms](dotnet-build-3646-changes.md#windows-forms)
-- [Workflow](dotnet-build-3646-changes.md#Workflow)
-- [WPF](dotnet-build-3646-changes.md#wpf)
+- [ASP.NET](changes.md#asp.net)
+- [BCL](changes.md#bcl)
+- [CLR](changes.md#clr)
+- [SQL](changes.md#sql)
+- [WCF](changes.md#wcf)
+- [Windows Forms](changes.md#windows-forms)
+- [Workflow](changes.md#Workflow)
+- [WPF](changes.md#wpf)
