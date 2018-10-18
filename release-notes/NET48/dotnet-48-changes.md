@@ -47,7 +47,7 @@ DateTime and DateTimeOffset operations will continue to work as it used to work,
 * Fixed a possible deadlock when calling Dispose() on an EventSource. [597221, System.Core.dll, Bug, Build:3621]
 * The ‘shadowCopyVerifyByTimestamp’ setting is now configurable for individual appdomains, as opposed to being a process wide setting. This helps in situations where you may not be the host process, but want to configure a new appdomain that verifys timestamps when shadow copying. [565570, clr.dll, Bug, Build:3632]
 * Addressed the issue where the JIT compiler optimized away a call to the CompareExchange intrinsic operation under specific conditions [638227, clrjit.dll, Bug, Build:3646]
-* CLR COM Event Handler returns E_INVALIDARG and Array Data is not Updated when Event Parameter is double pointer to SAFEARRAY. [239541, WindowsBase.dll, Bug, Build:3673]
+* CLR COM no longer returns E_INVALIDARG when marshalling a byref SafeArray from an Event Handler. [239541, WindowsBase.dll, Bug, Build:3673]
 * Fixed a potential hang when a blocking GC is induced in low memory situations [374828, clr.dll, Bug, Build:3673]
 * If you are using Server GC on a Skylake or later machine, you might notice that clr!SVR::t_join::join is taking a lot more CPU cycles. This is because clr!SVR::t_join::join uses the PAUSE instruction which takes a lot longer on Skylake+. This fix scales down the number of times it’s called when running on Skylake+ machine. [683269, clr.dll, Bug, Build:3673]
 
@@ -150,7 +150,6 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
 * Added support for UIA notification event to ProgressBar class. The feature is available starting with Windows 10, version 1709 (RS3). [581351, System.Windows.Forms.dll, Bug, Build:3632]
 * Fixed an issue where read-only Status for DataGridView TextBox column is not announced by Narrator. This change is effective in applications that were recompiled to target .NET framework 4.8. [599936, System.Windows.Forms.dll, Bug, Build:3632]
 * Fixed reliability issues in Graphics class when used in RDP sessions. [627739, System.Drawing.dll, Bug, Build:3632]
-* Fixed accessible hierarchy of WinForms DataGridView control to represent its currently editing control (inner cell TextBox or ComboBox) as a child of corresponding editing cell. Added support of UIA notifications to DataGridView control. [442899, System.Windows.Forms.Dll, Bug, Build:3646]
 * Fixed the issue of Narrator not announcing the updated value of ComboBox in PropertyGrid. 
 Added support for UIA notification event to PropertyGrid. The feature is available starting with Windows 10, version 1709 (RS3). Added screen reader announcement for PropertyGrid's ComboBox value changes. Added ComboBox's text field update in response of ComboBox selection changes.
 In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. App.config file content is shown below (in 642548). [508369, System.Windows.Forms.dll, Bug, Build:3646]
@@ -174,10 +173,10 @@ In order for an application that targets .NET Framework 4.8 to opt out from this
 * Fixed Button control to scale according to monitor Dpi on which the control is being displayed. [656271, System.Windows.Forms.dll, Bug, Build:3646]
 * Improved loading/rendering time for windows forms controls.  [662839, System.Windows.Forms.dll, Bug, Build:3646]
 * Fixed accessible hierarchy of WinForms DataGridView control to represent its currently editing control (inner cell TextBox or ComboBox) as a child of corresponding editing cell. Added support of UIA notifications to DataGridView control. [442899, System.Windows.Forms.Dll, Feature, Build:3673]
-"A ToolStrip item's tooltip is displayed now when a user uses a keyboard to focus the ToolStrip item.
-This change is effective in applications that have Switch.System.Windows.Forms.UseLegacyToolTipDisplay value and either Switch.UseLegacyAccessibilityFeatures.3 value is set to false or application is built to target .NET version 4.8.
+* A ToolStrip item's tooltip is displayed now when a user uses a keyboard to focus the ToolStrip item.
+This change is effective in applications that have Switch.System.Windows.Forms.UseLegacyToolTipDisplay value and either Switch.UseLegacyAccessibilityFeatures.3 value is set to false or application is built to target .NET version 4.8. [549360, System.Windows.Forms.dll, Bug, Build:3673]
 App.config file content example:
-<?xml version=""1.0"" encoding=""utf-8""?>
+```xml
 <configuration>
   ...
   <runtime>
@@ -185,33 +184,15 @@ App.config file content example:
     <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
     <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false;Switch.System.Windows.Forms.UseLegacyToolTipDisplay=false""/>
   </runtime>
-</configuration>  [549360, System.Windows.Forms.dll, Bug, Build:3673]
+</configuration>
+```
 * Fixed DataGridView ComboBox accessible hierarchy. Introduced the support of ComboBox UIA notifications [642548, System.Windows.Forms.Dll, Bug, Build:3673]
 * Fixed localizable UI Automation Provider name for DataGridView EditingPanel.
-In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
-<?xml version=""1.0"" encoding=""utf-8""?>
-<configuration>
-  <runtime>
-    <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
-    <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false""/>
-  </runtime>
-</configuration> [654115, System.Windows.Forms.Dll, Bug, Build:3673]
-* Fixed DataGridView not sortable column announcement and providing item status to prevent exposing 'Not sorted' info and just be silent regarding the sorting status for such columns.
-In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. For example:
-   ```xml
-<?xml version=""1.0"" encoding=""utf-8""?>
-<configuration>
-  <runtime>
-    <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
-    <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false""/>
-  </runtime>
-</configuration>
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [654115, System.Windows.Forms.Dll, Bug, Build:3673]
+* Fixed DataGridView not sortable column announcement and providing item status to prevent exposing 'Not sorted' info and just be silent regarding the sorting status for such columns. 
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. 
 In order for an application that targets 4.8 to opt out from this change, use the following combination of switches:
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>
-   ```
-[661319, System.Windows.Forms.Dll, Bug, Build:3673]
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [661319, System.Windows.Forms.Dll, Bug, Build:3673]
 
 ## WPF
 
@@ -278,10 +259,23 @@ The maximum object nesting depth can be adjusted (default being 300) with the fo
 <add key=""""microsoft:WorkflowComponentModel:XOMLMaximumNestedObjectDepth"""" value=""""n""""/>
 Where n is the new maximum object nesting depth.
 The possible issues like, random code execution during XOML deserialization (even when CheckTypes parameter is specified to the WorkflowCompiler), have been resolved [631082, System.Workflow.ComponentModel.dll, Bug, Build:3646]
-* Fixed an accessibility problem that the warning icons on workflow activity designer is not accessible [407415, System.Activities.Presentation.dll, Bug, Build:3673]
-* Fixed an accessibility problem to enable connector label reading on workflow designer [604810, System.Activities.Presentation.dll, Bug, Build:3673]
-* Remoting calls made within a transaction can lead to Transaction.Current incorrectly returning null (4.8) [672774, System.Activities.Presentation.dll, Bug, Build:3673]
-
-## Runtime
-
-* CLR COM Event Handler returns E_INVALIDARG and Array Data is not Updated when Event Parameter is double pointer to SAFEARRAY. [239541,WindowsBase.dll, Bug, Build:3673]
+* A ToolStrip item's tooltip is displayed now when a user uses a keyboard to focus the ToolStrip item.
+This change is effective in applications that have Switch.System.Windows.Forms.UseLegacyToolTipDisplay value and either Switch.UseLegacyAccessibilityFeatures.3 value is set to false or application is built to target .NET version 4.8. [549360, System.Windows.Forms.dll, Bug, Build:3673]
+App.config file content example:
+```xml
+<configuration>
+  ...
+  <runtime>
+    <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
+    <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
+    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false;Switch.System.Windows.Forms.UseLegacyToolTipDisplay=false""/>
+  </runtime>
+</configuration>
+```
+* Fixed DataGridView ComboBox accessible hierarchy. Introduced the support of ComboBox UIA notifications [642548, System.Windows.Forms.Dll, Bug, Build:3673]
+* Fixed localizable UI Automation Provider name for DataGridView EditingPanel.
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [654115, System.Windows.Forms.Dll, Bug, Build:3673]
+* Fixed DataGridView not sortable column announcement and providing item status to prevent exposing 'Not sorted' info and just be silent regarding the sorting status for such columns. 
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. 
+In order for an application that targets 4.8 to opt out from this change, use the following combination of switches:
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [661319, System.Windows.Forms.Dll, Bug, Build:3673]
