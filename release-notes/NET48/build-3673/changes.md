@@ -5,14 +5,14 @@ Following changes are included in .NET Framework 4.8 build 3673. You can view th
 
 ## ASP.NET
 
-* Fixed NullReferenceException thrown from the page/control with only parameterized constructors with default values when targeting 4.7.2 [635479, System.Web.dll, Bug, Build:3673]
+* Fixed NullReferenceException thrown from the page/control with only parameterized constructors with default values when targeting 4.7.2. [635479, System.Web.dll, Bug, Build:3673]
 * Fixed a perf issue in HttpApplication instances pool in HttpApplicationFactory class. [639421, system.web.dll, Bug, Build:3673]
 
 ## BCL
 
 * Fixed GetECDsaPublicKey to work with brainpool curves. [586452, System.Core.dll, Bug, Build:3673]
 * Reduced the number of object finalizations that occur as a result of using X509Certificate2 and related types. [654137, mscorlib.dll, System.dll, System.Security.dll, Bug, Build:3673]
-* Fixed formatting of Japanese date with year 1 (as first year of any era), the date will be formatted using 元 character and not year number “1”.  Example of the new formatted date behavior: 平成元年11月21日compared to old formatted date behavior 平成1年11月21日 [670097, mscorlib.dll, Bug, Build:3673]
+* Fixed formatting of Japanese date with year 1 (as first year of any era), the date will be formatted using 元 character and not year number “1”. Example of the new formatted date behavior: 平成元年11月21日compared to old formatted date behavior 平成1年11月21日 [670097, mscorlib.dll, Bug, Build:3673]
 
 ## CLR
 * CLR COM no longer returns E_INVALIDARG when marshalling a byref SafeArray from an Event Handler. [239541, WindowsBase.dll, Bug, Build:3673]
@@ -25,23 +25,25 @@ Following changes are included in .NET Framework 4.8 build 3673. You can view th
 ## Windows Forms
 * Fixed accessible hierarchy of WinForms DataGridView control to represent its currently editing control (inner cell TextBox or ComboBox) as a child of corresponding editing cell. Added support of UIA notifications to DataGridView control. [442899, System.Windows.Forms.Dll, Feature, Build:3673]
 * A ToolStrip item's tooltip is displayed now when a user uses a keyboard to focus the ToolStrip item.
-This change is effective in applications that have Switch.System.Windows.Forms.UseLegacyToolTipDisplay value and either Switch.UseLegacyAccessibilityFeatures.3 value is set to false or application is built to target .NET version 4.8.
+This change is effective in applications that have Switch.System.Windows.Forms.UseLegacyToolTipDisplay value and either Switch.UseLegacyAccessibilityFeatures.3 value is set to false or application is built to target .NET version 4.8. [549360, System.Windows.Forms.dll, Bug, Build:3673]
 App.config file content example:
-      <configuration>
-        <runtime>
-        <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
-        <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
-       <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false""/>
-       </runtime>
-      </configuration>
-[549360, System.Windows.Forms.dll, Bug, Build:3673]
+```xml
+<configuration>
+  ...
+  <runtime>
+    <!-- AppContextSwitchOverrides values are in the form of 'key1=true|false;key2=true|false  -->
+    <!-- Enabling newer accessibility features (e.g. UseLegacyAccessibilityFeatures.2=false) requires all older accessibility features to be enabled (e.g. UseLegacyAccessibilityFeatures=false) -->
+    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=false;Switch.System.Windows.Forms.UseLegacyToolTipDisplay=false""/>
+  </runtime>
+</configuration>
+```
 * Fixed DataGridView ComboBox accessible hierarchy. Introduced the support of ComboBox UIA notifications [642548, System.Windows.Forms.Dll, Bug, Build:3673]
 * Fixed localizable UI Automation Provider name for DataGridView EditingPanel.
 In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [654115, System.Windows.Forms.Dll, Bug, Build:3673]
 * Fixed DataGridView not sortable column announcement and providing item status to prevent exposing 'Not sorted' info and just be silent regarding the sorting status for such columns. 
-> In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. 
-> In order for an application that targets 4.8 to opt out from this change, use the following combination of switches:
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [661319, System.Windows.Forms.Dll, Bug, Build:3673]
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. 
+In order for an application that targets 4.8 to opt out from this change, use the following combination of switches:
+<AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/> [661319, System.Windows.Forms.Dll, Bug, Build:3673]
 
 ## Workflow
 
@@ -49,11 +51,10 @@ In order for the application to benefit from these changes, the application shou
 * Fixed an accessibility problem to enable connector label reading on workflow designer [604810, System.Activities.Presentation.dll, Bug, Build:3673]
 * Fixed a problem with Transaction.Current and remoting operations.
   In some .NET Remoting scenarios, when using TransactionScopeAsyncFlowOption.Enabled, it was possible to have Transaction.Current reset to null after a remoting call. Sometimes this was due to the remoting lease lifetime expiring while the remoting call was outstanding (pre 4.7.2). And sometimes this occurred when the remoting call did not leave the caller's AppDomain (with 4.7.2).
-    This is now fixed for the latter case (remoting in the same AppDomain).
-    For the former case (lease lifetime expires), a new AppSetting for the configuration file has been introduced to allow the user to specify the lease lifetime of the object used for keeping track of Transaction.Current in the call context. The user should set this to the number of minutes of the longest expected remoting call.
-    The AppSetting looks like this:
-    <add key=""Transactions:ContextKeyRemotingLeaseLifetimeInMinutes"" value=""5""/>
-    The value specifies the lease lifetime for the object, in minutes. [672774, System.Transactions.dll, Bug, Build:3673]
+``This is now fixed for the latter case (remoting in the same AppDomain).
+For the former case (lease lifetime expires), a new AppSetting for the configuration file has been introduced to allow the user to specify the lease lifetime of the object used for keeping track of Transaction.Current in the call context. The user should set this to the number of minutes of the longest expected remoting call.
+The AppSetting looks like this:
+<add key=""Transactions:ContextKeyRemotingLeaseLifetimeInMinutes"" value=""5""/>The value specifies the lease lifetime for the object, in minutes.`` [672774, System.Transactions.dll, Bug, Build:3673]
 * Fixed an accessibility problem to have navigation information for ExpandAll/CollapseAll ToggleButtons on workflow designer. [682170, System.Activities.Presentation.dll, Bug, Build:3673]
 
 ## WPF
