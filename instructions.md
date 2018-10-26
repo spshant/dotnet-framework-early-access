@@ -11,7 +11,7 @@ You can install the early access build by downloading the latest build and then 
 
 The installer will look similar to the following:
 
-![.NET Framework Early Access Installer](https://github.com/padmasrid/dotnet-framework-early-access/blob/master/.Net%20Framework%204.8%20Preview%20Developer%20Pack.PNG)
+![.NET Framework Early Access Installer](https://user-images.githubusercontent.com/30737530/47593173-31600e80-d92b-11e8-8f0e-0da8562b9d39.PNG)
 
 ## Validating Installation
 
