@@ -11,7 +11,7 @@ You can install the early access build by downloading the latest build and then 
 
 The installer will look similar to the following:
 
-![.NET Framework Early Access Installer](.Net Framework 4.8 Preview Developer Pack.png)
+![.NET Framework Early Access Installer](![Alt text] (master/.Net%20Framework%204.8%20Preview%20Developer%20Pack.PNG?raw =true ".Net Framework 4.8 Preview Developer Pack")
 
 ## Validating Installation
 
