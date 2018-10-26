@@ -7,11 +7,11 @@ The following instructions explain how to install and uninstall .NET Framework E
 You can install the early access build by downloading the latest build and then running the installer. The installer and license links are provided below.
 
 * [.NET Framework Early Access License](microsoft-dotnet-framework-pre-release-license.txt)
-* [.NET Framework build 3673](https://go.microsoft.com/fwlink/?LinkId=2033281)
+* [.NET Framework build 3673](https://go.microsoft.com/fwlink/?LinkId=2032182)
 
 The installer will look similar to the following:
 
-![.NET Framework Early Access Installer](https://user-images.githubusercontent.com/2608468/29037010-a78c3702-7b56-11e7-976e-bfc09b8917dc.png)
+![.NET Framework Early Access Installer](.Net Framework 4.8 Preview Developer Pack.png)
 
 ## Validating Installation
 
