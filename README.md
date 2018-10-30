@@ -3,14 +3,14 @@
 This repository is the home for .NET Framework Early Access Program. It provides you with all the information you need to participate in .NET Framework Early Access Program. In this program we will share early builds of the next release of the .NET Framework on a regular basis for your feedback. The builds shared via this program are not ready for production and are not supported. 
 
 * [.NET Framework Early Access License](microsoft-dotnet-framework-pre-release-license.txt)
-* [Download .NET Framework Early Access build 3673](https://go.microsoft.com/fwlink/?linkid=2032091) 
+* [Download .NET Framework Early Access build 3673](https://go.microsoft.com/fwlink/?linkid=2033281) 
 
 
 **Participation Information**
 
 * [Install Instructions](instructions.md)
 * [Release Notes](release-notes/NET48/build-3673/readme.md)
-* [Build 3673 - Blog post](https://blogs.msdn.microsoft.com/dotnet/2018/09/17/announcing-net-framework-4-8-early-access-build-3673)
+* [Build 3673 - Blog post](https://go.microsoft.com/fwlink/?linkid=2034680)
 
 **Reporting Issues**
 
@@ -43,7 +43,7 @@ The .NET Framework early access builds will replace any existing .NET Framework 
 
 ## More Information on the .NET Framework
 
-The [.NET Framework 4.7.2](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/) is the latest released version of the [.NET Framework](https://docs.microsoft.com/dotnet/framework/). It can be used for production deployments on Windows 7, Windows Server 2008 R2 SP1, and later versions of both the client and server Windows families.
+See [this page](https://www.microsoft.com/net/download) for information about the latest released version of the .NET Framework that can be used for production deployments on Windows 7, Windows Server 2008 R2 SP1, and later versions of both the client and server Windows families.
 
 Please continue to file .NET Framework released product issues at [microsoft/dotnet](https://github.com/microsoft/dotnet/issues),
 .NET Core product issues at [dotnet/core](https://github.com/dotnet/core/issues),
