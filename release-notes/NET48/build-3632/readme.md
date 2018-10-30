@@ -2,7 +2,7 @@
 
 You can learn about the changes made in this build of the .NET Framework.
 
-- [Download](https://go.microsoft.com/fwlink/?linkid=2006125)
+- [Download](https://go.microsoft.com/fwlink/?LinkId=2033281)
 - [Announcement blog post](https://blogs.msdn.microsoft.com/dotnet/2018/07/18/announcing-net-framework-4-8-early-access-build-3632)
 - [Release notes](dotnet-build-3632-changes.md)
 
