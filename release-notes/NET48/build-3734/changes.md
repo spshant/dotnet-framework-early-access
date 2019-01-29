@@ -49,9 +49,10 @@ Following changes are included in .NET Framework 4.8 build 3734. You can view th
 
 * Added Scroll UIA pattern to ListBox items in order to make the control accessible. [742319, System.Windows.Forms.dll, Bug, Build:3734]
 * Fixed ColorEditor, ContentAlignmentEditor, CursporEditor to respond to DPI changed messages and made changes in FontEditor to always open in the 'SystemAware' mode even when the application is in "per-monitor" mode. [746634, System.Windows.Forms.dll, System.Drawing.Design.dll, Bug, Build:3734]
-* Fixed providing correct accessibility information and correct accessible hierarchy of PropertyGrid control.
-In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [526702, system.windows.forms.dll, Bug, Build:3734]
-For example:
+* Fixed providing correct accessibility information and correct accessible hierarchy of PropertyGrid control. [526702, system.windows.forms.dll, Bug, Build:3734]
+* The screen reader announcement of the WinForms' Menu and ToolStrip expandable subitems has been fixed to not read in items' and scan mode the hidden (collapsed) subitems until corresponding parent Menu item/ToolStrip DropDown item is expanded. In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [560840, System.Windows.Forms.dll, Bug, Build:3734]
+* Fixed UI Automation provided accessibility of WinForms DataGridView ComboBox to have appropriate and consistent screen reader announcement for ComboBox interactions. The feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [732559, System.Windows.Forms.Dll, Bug, Build:3734]  
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file.
 ```xml
 <configuration>
   ...
@@ -62,11 +63,6 @@ For example:
   </runtime>
 </configuration>
 ```
-* The screen reader announcement of the WinForms' Menu and ToolStrip expandable subitems has been fixed to not read in items' and scan mode the hidden (collapsed) subitems until corresponding parent Menu item/ToolStrip DropDown item is expanded. In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [560840, System.Windows.Forms.dll, Bug, Build:3734]
-* Fixed UI Automation provided accessibility of WinForms DataGridView ComboBox to have appropriate and consistent screen reader announcement for ComboBox interactions. The feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [732559, System.Windows.Forms.Dll, Bug, Build:3734]  
-In order for an application that targets 4.8 to opt out from this change, use the following combination of switches:
-
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>"
 
 ## WPF
 

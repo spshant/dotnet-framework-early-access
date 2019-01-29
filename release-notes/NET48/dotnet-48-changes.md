@@ -303,9 +303,10 @@ App.config file content example with enabled keyboard tooltips for apps targetin
 * Added per monitor DPI awareness support to the PropertyGrid. [719232, System.Windows.Forms.dll, Bug, Build:3707]
 * Added Scroll UIA pattern to ListBox items in order to make the control accessible. [742319, System.Windows.Forms.dll, Bug, Build:3734]
 * Fixed ColorEditor, ContentAlignmentEditor, CursporEditor to respond to DPI changed messages and made changes in FontEditor to always open in the 'SystemAware' mode even when the application is in "per-monitor" mode. [746634, System.Windows.Forms.dll, System.Drawing.Design.dll, Bug, Build:3734]
-* Fixed providing correct accessibility information and correct accessible hierarchy of PropertyGrid control.
-In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [526702, system.windows.forms.dll, Bug, Build:3734]
-For example:
+* Fixed providing correct accessibility information and correct accessible hierarchy of PropertyGrid control. [526702, system.windows.forms.dll, Bug, Build:3734]
+* The screen reader announcement of the WinForms' Menu and ToolStrip expandable subitems has been fixed to not read in items' and scan mode the hidden (collapsed) subitems until corresponding parent Menu item/ToolStrip DropDown item is expanded. In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [560840, System.Windows.Forms.dll, Bug, Build:3734]
+* Fixed UI Automation provided accessibility of WinForms DataGridView ComboBox to have appropriate and consistent screen reader announcement for ComboBox interactions. The feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [732559, System.Windows.Forms.Dll, Bug, Build:3734]  
+In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file.
 ```xml
 <configuration>
   ...
@@ -316,11 +317,6 @@ For example:
   </runtime>
 </configuration>
 ```
-* The screen reader announcement of the WinForms' Menu and ToolStrip expandable subitems has been fixed to not read in items' and scan mode the hidden (collapsed) subitems until corresponding parent Menu item/ToolStrip DropDown item is expanded. In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [560840, System.Windows.Forms.dll, Bug, Build:3734]
-* Fixed UI Automation provided accessibility of WinForms DataGridView ComboBox to have appropriate and consistent screen reader announcement for ComboBox interactions. The feature is available starting with Windows 10, version 1709 (RS3). In order for the application to benefit from these changes, the application should be recompiled to target .NET framework 4.8 or the application should explicitly opt-in into all accessibility app context switches in the app.config file. [732559, System.Windows.Forms.Dll, Bug, Build:3734]  
-In order for an application that targets 4.8 to opt out from this change, use the following combination of switches:
-
-    <AppContextSwitchOverrides value=""Switch.UseLegacyAccessibilityFeatures=false;Switch.UseLegacyAccessibilityFeatures.2=false;Switch.UseLegacyAccessibilityFeatures.3=true""/>"
 
 ## WPF
 
@@ -393,7 +389,6 @@ On .NET Framework Versions 4.7.2 and older, applications must opt in to enable t
 * Fixed the construction of automation for an ItemsControl to avoid calling the control's IsItemItsOwnContainerOverride method. This avoids crashes in cases where the override has bugs [755174, PresentationCore.dll, PresentationFramework.dll, Bug, Build:3734]
 * Fixed an issue arising when removing an item from a grouped collection view. Any groups that become empty are themselves removed, raising CollectionChanged events before the parent groups' counts have been fully updated. An event handler that calls back into the collection view can get ArgumentOutOfRangeException. [765355, PresentationFramework.dll, Bug, Build:3734]
 * In .NET 4.8 Preview, WPF programs that create many RenderTargets (e.g. RenderTargetBitmap) can leak GDI handles and memory eventually resulting in an OutOfMemoryException from System.Windows.Media.Composition.DUCE+Channel.SyncFlush(). This was due to a COM reference cycle keeping render targets alive in the WPF renderer. Fixed this issue. [756618, wpfgfx_v0400.dll, Bug, Build:3734]
-
 
 ## WorkFlow
 
