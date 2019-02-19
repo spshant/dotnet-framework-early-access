@@ -39,6 +39,7 @@ DateTime and DateTimeOffset operations will continue to work as it used to work,
 * Fixed an IndexOutOfRangeException thrown when asynchronously reading a process output with less than a character's worth of bytes is read at the beginning of a line. [724219, System.dll, Bug, Build:3707]
 * Mitigate compatibility breaks seen in some System.Data.SqlClient usage scenarios. [727701, System.Configuration.dll, Bug, Build:3707]
 * Fixed a serialization exception that occurred when a huge amount of objects were serialized with BinaryFormatter. [761576, mscorlib.dll, Bug, Build:3734]
+Added support for formatting the Japanese first year of era using Gannen 元 when the date pattern not having single quotes around 年. e.g. y年. [777279, mscorlib.dll, Bug, Build:3745]
 
 
 ## ClickOnce
@@ -113,6 +114,7 @@ DateTime and DateTimeOffset operations will continue to work as it used to work,
 * Added the ability via the config file to specify opt-in performance caching of default credentials for Windows authentication for HTTP and SMTP APIs. [514209, System.dll, Bug, Build:3694]
 * Added retry timer for PAC file discovery after failure. [567511, System.dll, Bug, Build:3694]
 * Fixed handling of 1xx interim responses. [711440, System.dll, Bug, Build:3734]
+* Fixed domain spoofing vulnerability in .NET Framework and .NET Core which causes the meaning of a URI to change when International Domain Name encoding is applied by disallowing certain Unicode characters during the IDN encoding process. [694688, System.Private.Uri, Bug, Build:3745]
 
 
 ## SQL
@@ -137,6 +139,7 @@ DateTime and DateTimeOffset operations will continue to work as it used to work,
   </appSettings> [695709, System.Servicemodel.dll, Bug, Build:3694]
 * Fixed a race condition with IIS hosted net.tcp services when the portsharing service is restarted which resulted in the service being unavailable. [695877, System.ServiceModel.WasHosting.dll, Bug, Build:3694]
 * Fixed broken WCF document links in the tracing log that were broken due to MSDN doc location change. [712450, System.ServiceModel.dll, Bug, Build:3707]
+* Made some format changes and added lang attribute to WCF service Health page (like http://localhost:83/Service1?health) and WCF service metadata page (like http://localhost:83/Service1) to improve accessibility. [777308, System.ServiceModel.dll, Bug, Build:3745]
 
 
 ## Windows Forms
@@ -389,6 +392,8 @@ On .NET Framework Versions 4.7.2 and older, applications must opt in to enable t
 * Fixed the construction of automation for an ItemsControl to avoid calling the control's IsItemItsOwnContainerOverride method. This avoids crashes in cases where the override has bugs [755174, PresentationCore.dll, PresentationFramework.dll, Bug, Build:3734]
 * Fixed an issue arising when removing an item from a grouped collection view. Any groups that become empty are themselves removed, raising CollectionChanged events before the parent groups' counts have been fully updated. An event handler that calls back into the collection view can get ArgumentOutOfRangeException. [765355, PresentationFramework.dll, Bug, Build:3734]
 * In .NET 4.8 Preview, WPF programs that create many RenderTargets (e.g. RenderTargetBitmap) can leak GDI handles and memory eventually resulting in an OutOfMemoryException from System.Windows.Media.Composition.DUCE+Channel.SyncFlush(). This was due to a COM reference cycle keeping render targets alive in the WPF renderer. Fixed this issue. [756618, wpfgfx_v0400.dll, Bug, Build:3734]
+* Added an AppContext switch 'Switch.System.Windows.Controls.ItemsControlDoesNotSupportAutomation' that guards the fix for the automation tree under a plain ItemsControl (previously disclosed Bug 410007).  This switch defaults to 'false' for apps that target .NET 4.8, or to 'true' for apps that target earlier versions.   [778689, PresentationCore.dll, WindowsBase.dll, Bug, Build:3745]
+
 
 ## WorkFlow
 
@@ -414,3 +419,32 @@ The AppSetting looks like this:
 * Fixed an accessibility problem to have navigation information for ExpandAll/CollapseAll ToggleButtons on workflow designer. [682170, System.Activities.Presentation.dll, Bug, Build:3673]
 * Previously Visual Studio builds of C# projects would create 3 temporary files and not clean them. With this change, the files are only created for C# projects that contain XAML files and utilize the XamlAppDef build action and those files are deleted with the Clean task. [392996, System.Workflow.Runtime.dll, Bug, Build:3694]
 * Prevented vulnerabilities based on misuse of serialized ActivitySurrogateSelector.ObjectSurrogates. [726199, System.Workflow.ComponentModel.dll, Bug, Build:3707]
+* Fixed a vulnerability in the WorkflowMarkupSerializer that allowed "random" code to be executed with certain XOML constructs.
+If users experience application compatibility problems, there are couple of "opt-out" < appSettings> values that allow users to modify the behavior introduced by this change:
+```xml
+<add key="microsoft:WorkflowComponentModel:DisableXOMLSerializerTypeChecking" value="true"/>
+```
+Setting this value to "true" completely disables the type checking that is done during deserialization. It takes precedence over the value below.
+```xml
+<add key="microsoft:WorkflowComponentModel:DisableXOMLSerializerDefaultUnauthorizedTypes" value="true"/>
+```
+The type checker has a list of hard-coded types that are disallowed by default. Setting this value to "true" allows those hard-coded types. The user can specify a list of unauthorized types on their own by adding the following to the app.config file:
+```xml
+<configuration>
+  <configSections>​
+    <sectionGroup name="System.Workflow.ComponentModel.WorkflowCompiler" type="System.Workflow.ComponentModel.Compiler.WorkflowCompilerConfigurationSectionGroup, System.Workflow.ComponentModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">​
+      <section name="authorizedTypes" type="System.Workflow.ComponentModel.Compiler.AuthorizedTypesSectionHandler, System.Workflow.ComponentModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>​
+    </sectionGroup>​
+  </configSections>​
+
+<System.Workflow.ComponentModel.WorkflowCompiler>
+    <authorizedTypes>​
+      <myAuthorizedTypes version="v4.0">​
+        <authorizedType Assembly="System.Activities.Presentation, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Activities.Presentation" TypeName="WorkflowDesigner" Authorized="false"/>
+      </myAuthorizedTypes>
+    </authorizedTypes>​
+  </System.Workflow.ComponentModel.WorkflowCompiler>​
+</configuration>
+```
+
+In the above example, the type System.ActivitiesPresentation.WorkflowDesigner in the System.Activities.Presentation assembly is unauthorized because its "Authorized" value is "false". [735532, System.Workflow.ComponentModel.dll, Bug, Build:3745]
