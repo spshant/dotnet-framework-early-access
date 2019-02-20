@@ -114,7 +114,7 @@ Added support for formatting the Japanese first year of era using Gannen 元 whe
 * Added the ability via the config file to specify opt-in performance caching of default credentials for Windows authentication for HTTP and SMTP APIs. [514209, System.dll, Bug, Build:3694]
 * Added retry timer for PAC file discovery after failure. [567511, System.dll, Bug, Build:3694]
 * Fixed handling of 1xx interim responses. [711440, System.dll, Bug, Build:3734]
-* Fixed domain spoofing vulnerability in .NET Framework and .NET Core which causes the meaning of a URI to change when International Domain Name encoding is applied by disallowing certain Unicode characters during the IDN encoding process. [694688, System.Private.Uri, Bug, Build:3745]
+* Fixed domain spoofing vulnerability in .NET Framework and .NET Core which causes the meaning of a URI to change when International Domain Name encoding is applied by disallowing certain Unicode characters during the IDN encoding process - CVE-2019-0657 [694688, System.Private.Uri, Bug, Build:3745]
 
 
 ## SQL

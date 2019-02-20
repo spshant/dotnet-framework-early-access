@@ -9,7 +9,7 @@ Added support for formatting the Japanese first year of era using Gannen 元 whe
 
 ## Networking
 
-* Fixed domain spoofing vulnerability in .NET Framework and .NET Core which causes the meaning of a URI to change when International Domain Name encoding is applied by disallowing certain Unicode characters during the IDN encoding process. [694688, System.Private.Uri, Bug, Build:3745]
+* Fixed domain spoofing vulnerability in .NET Framework and .NET Core which causes the meaning of a URI to change when International Domain Name encoding is applied by disallowing certain Unicode characters during the IDN encoding process - CVE-2019-0657 [694688, System.Private.Uri, Bug, Build:3745]
 
 ## WCF
 
